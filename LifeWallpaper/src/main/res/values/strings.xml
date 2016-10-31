@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Cristmas tree wallpaper</string>
+    <string name="button_full">Install full</string>
+    <string name="button_light">Install light</string>
+    <string name="button_exit">Exit</string>
+    <string name="message_button_full">Full version install</string>
+    <string name="message_button_light">Light version install</string>
+    <string name="message_button_exit">Buy-buy</string>
+</resources>
