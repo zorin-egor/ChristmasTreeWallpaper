@@ -134,7 +134,7 @@ void Main::createObjects() {
     // Tree
     GLuint treeSize = 50;
     if(!IS_QUALITY)
-        treeSize = 30;
+        treeSize = 35;
 
     GLfloat border = HEIGHT < WIDTH? 0.5f : 0.6f;
     pThree = new Tree(treeSize,
@@ -157,7 +157,7 @@ void Main::createObjects() {
     // Snowdrift
     GLuint snowDriftSize = 30;
     if(!IS_QUALITY)
-        snowDriftSize = 5;
+        snowDriftSize = 10;
 
     pSnowdrift = new Snowdrift( snowDriftSize,
                                 bottomX,
