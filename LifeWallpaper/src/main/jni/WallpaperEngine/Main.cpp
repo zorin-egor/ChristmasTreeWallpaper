@@ -102,7 +102,7 @@ bool Main::init(){
 
 void Main::createObjects() {
     // Get slots of img
-    textures = new ManageTexture(env, pngManager, assetManager);
+    pTextures = new ManageTexture(env, pngManager, assetManager);
 
     // Snow back
     GLuint snowBackCount = 40;
@@ -116,7 +116,7 @@ void Main::createObjects() {
                          ANGLE,
                          1.4f,
                          programSnow,
-                         textures->getTexturesPackIDs(ManageTexture::SNOW),
+                         pTextures->getTexturesPackIDs(ManageTexture::SNOW),
                          snowStartCoords,
                          snowFallSpeed ,
                          snowSize,
@@ -144,7 +144,7 @@ void Main::createObjects() {
                       10.0f,
                       border,
                       programEllipse,
-                      textures->getTexturesPackIDs(ManageTexture::TREE),
+                      pTextures->getTexturesPackIDs(ManageTexture::TREE),
                       threePosition,
                       threesAngle,
                       threeRadius,
@@ -166,7 +166,7 @@ void Main::createObjects() {
                                 0.0f,
                                 pThree->getBottomY(),
                                 programEllipse,
-                                textures->getTexturesPackIDs(ManageTexture::TREE),
+                                pTextures->getTexturesPackIDs(ManageTexture::TREE),
                                 threePosition,
                                 threesAngle,
                                 threeRadius,
@@ -192,7 +192,7 @@ void Main::createObjects() {
                                0.05f / COEFFICIENT,
                                0.05f,
                                programStar,
-                               textures->getTexturesPackIDs(ManageTexture::TREE),
+                               pTextures->getTexturesPackIDs(ManageTexture::TREE),
                                starsAngle,
                                starColor,
                                starCenter,
@@ -214,7 +214,7 @@ void Main::createObjects() {
                           ANGLE,
                           1.95f,
                           programSnow,
-                          textures->getTexturesPackIDs(ManageTexture::SNOW),
+                          pTextures->getTexturesPackIDs(ManageTexture::SNOW),
                           snowStartCoords,
                           snowFallSpeed ,
                           snowSize,

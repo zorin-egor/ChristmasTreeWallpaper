@@ -38,12 +38,11 @@ class Main {
 
          ~Main(){
                 LOGI("~Main();");
-                glDeleteProgram(programEllipse);
-                glDeleteProgram(programStar);
-                glDeleteProgram(programSnow);
                 for(int i = 0; i < object.size(); i++){
                         delete object[i];
                 }
+
+                delete pTextures;
         }
 
         void step();
@@ -76,7 +75,7 @@ class Main {
         GLfloat currentAngle;
 
         // For get the texture
-        ManageTexture * textures;
+        ManageTexture * pTextures;
 
         // Programs
         GLuint programEllipse;
