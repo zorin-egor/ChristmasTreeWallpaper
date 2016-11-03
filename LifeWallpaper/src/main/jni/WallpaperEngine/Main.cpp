@@ -88,6 +88,9 @@ bool Main::init(){
     snowAmplitude = glGetAttribLocation(programSnow, "a_ArrayAmplitude");
     checkGLError("Main::init - snow - a_ArrayAmplitude");
 
+    // Clear compiliers
+    glReleaseShaderCompiler();
+
     //On alfa-blending
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     checkGLError("Main::init - glBlendFunc");

@@ -52,6 +52,9 @@ class Star : public Render {
 
     virtual ~Star(){
         LOGI("~Star");
+        // Off attributes
+//        glDisableVertexAttribArray(starsAngle);
+//        glDisableVertexAttribArray(starColor);
         delete [] arrayColor;
         delete [] arrayPosition;
     }

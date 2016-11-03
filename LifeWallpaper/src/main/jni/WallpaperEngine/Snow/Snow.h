@@ -54,6 +54,15 @@ class Snow : public Render {
 
         virtual ~Snow(){
             LOGI("~Snow");
+            // Off attributes
+//            glDisableVertexAttribArray(attrStartPosition);
+//            glDisableVertexAttribArray(attrFallSpeed);
+//            glDisableVertexAttribArray(attrSnowSize);
+//            glDisableVertexAttribArray(attrSnowShift);
+//            glDisableVertexAttribArray(attrSnowColor);
+//            glDisableVertexAttribArray(attrFreq);
+//            glDisableVertexAttribArray(attrAmplitude);
+
             delete [] arrayStartPosition;
             delete [] arrayFallSpeed;
             delete [] arrayFallSpeedSteps;

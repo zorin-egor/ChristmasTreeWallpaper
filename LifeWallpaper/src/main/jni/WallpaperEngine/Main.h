@@ -38,6 +38,11 @@ class Main {
 
          ~Main(){
                 LOGI("~Main();");
+//                glUseProgram(0);
+//                glDeleteProgram(programEllipse);
+//                glDeleteProgram(programStar);
+//                glDeleteProgram(programSnow);
+
                 for(int i = 0; i < object.size(); i++){
                         delete object[i];
                 }

@@ -62,6 +62,12 @@ class Ellipse : public Render {
 
         virtual ~Ellipse(){
             //LOGI("~Ellipse");
+            // Off attributes
+//            glDisableVertexAttribArray(speedAttr);
+//            glDisableVertexAttribArray(deltaAttr);
+//            glDisableVertexAttribArray(colorStartAttr);
+//            glDisableVertexAttribArray(colorEndAttr);
+
             delete [] colorStartArray;
             delete [] colorEndArray;
             delete [] arrayPosition;
