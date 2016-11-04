@@ -20,10 +20,10 @@ model {
 
         defaultConfig {
             applicationId = "ru.testsimpleapps.lifewallpapertree"
-            minSdkVersion.apiLevel = 9
+            minSdkVersion.apiLevel = 10
             targetSdkVersion.apiLevel = 24
-            versionCode = 7
-            versionName = "1.0.6"
+            versionCode = 9
+            versionName = "1.0.8"
         }
 
         ndk {

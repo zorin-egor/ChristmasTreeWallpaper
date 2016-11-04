@@ -1,5 +1,16 @@
 #include "Main.h"
 
+Main::~Main(){
+    LOGI("~Main();");
+    //glUseProgram(0);
+    //glDeleteProgram(programEllipse);
+    //glDeleteProgram(programStar);
+    //glDeleteProgram(programSnow);
+
+    deleteObjects();
+    delete pTextures;
+}
+
 bool Main::init(){
     // Ellipse
     programEllipse = MakeShaders::createProgram(MakeShaders::v_ellipse_shader, MakeShaders::f_ellipse_shader);
@@ -97,19 +108,31 @@ bool Main::init(){
     glEnable(GL_BLEND);
     checkGLError("Main::init - glEnable");
 
-    // Set viewport
-    glViewport(0, 0, WIDTH, HEIGHT);
-    checkGLError("Main::init - glViewport");
-    return true;
-}
-
-void Main::createObjects() {
     // Get slots of img
     pTextures = new ManageTexture(env, pngManager, assetManager);
 
+    return true;
+}
+
+void Main::onChange(int width, int height, bool isQuality){
+    this->width = width;
+    this->height = height;
+    this->isQuality = isQuality;
+    coefficient = (float) width / (float) height;
+
+    // Recreate objects with new data
+    deleteObjects();
+    createObjects();
+
+    // Set viewport
+    glViewport(0, 0, width, height);
+    checkGLError("Main::onChange - glViewport");
+}
+
+void Main::createObjects(){
     // Snow back
     GLuint snowBackCount = 40;
-    if(!IS_QUALITY)
+    if(!isQuality)
         snowBackCount = 30;
 
     pSnowBack = new Snow(snowBackCount,
@@ -131,15 +154,15 @@ void Main::createObjects() {
     object.push_back(pSnowBack);
 
     // For proportions
-    GLfloat bottomX = WIDTH < HEIGHT? 0.5f : 0.5 / COEFFICIENT;
-    GLfloat bottomY = WIDTH < HEIGHT? 0.08f : 0.12f;
+    GLfloat bottomX = width < height? 0.5f : 0.5 / coefficient;
+    GLfloat bottomY = width < height? 0.08f : 0.12f;
 
     // Tree
     GLuint treeSize = 50;
-    if(!IS_QUALITY)
+    if(!isQuality)
         treeSize = 35;
 
-    GLfloat border = HEIGHT < WIDTH? 0.5f : 0.6f;
+    GLfloat border = height < width? 0.5f : 0.6f;
     pThree = new Tree(treeSize,
                       bottomX,
                       bottomY,
@@ -159,7 +182,7 @@ void Main::createObjects() {
 
     // Snowdrift
     GLuint snowDriftSize = 30;
-    if(!IS_QUALITY)
+    if(!isQuality)
         snowDriftSize = 10;
 
     pSnowdrift = new Snowdrift( snowDriftSize,
@@ -184,7 +207,7 @@ void Main::createObjects() {
 
     // Star
     GLuint starCount = 300;
-    if(!IS_QUALITY)
+    if(!isQuality)
         starCount = 200;
 
     object.push_back(new Star( Star::HYPOCYCLOID,
@@ -192,7 +215,7 @@ void Main::createObjects() {
                                starCount,
                                0.0f,
                                pThree->getTopY() + 0.1f,
-                               0.05f / COEFFICIENT,
+                               0.05f / coefficient,
                                0.05f,
                                programStar,
                                pTextures->getTexturesPackIDs(ManageTexture::TREE),
@@ -207,7 +230,7 @@ void Main::createObjects() {
 
     // Snow front
     GLuint snowFrontCount = 100;
-    if(!IS_QUALITY)
+    if(!isQuality)
         snowFrontCount = 50;
 
     pSnowFront = new Snow(snowFrontCount,
@@ -227,6 +250,16 @@ void Main::createObjects() {
                           snowFreq,
                           snowAmplitude);
     object.push_back(pSnowFront);
+}
+
+void Main::deleteObjects(){
+    // Delete all links
+    for(int i = 0; i < object.size(); i++){
+        delete object[i];
+    }
+
+    // Clear links
+    object.clear();
 }
 
 void Main::step(){

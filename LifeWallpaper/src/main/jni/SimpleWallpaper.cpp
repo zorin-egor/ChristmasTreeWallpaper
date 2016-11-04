@@ -8,10 +8,16 @@ std::queue<Main *> wallpapersObjects;
 
 extern "C" {
 
-JNIEXPORT void JNICALL Java_ru_testsimpleapps_lifewallpapertree_WallpaperLib_init(JNIEnv * env, jobject obj, jobject assetManager, jobject pngManager, jint width, jint height, jboolean isQuality){
-        LOGI("INIT: H: %d; W: %d; HQ: %d;", height, width, isQuality);
-        wallpaper = new Main(env, assetManager, pngManager, width, height, isQuality);
+    JNIEXPORT void JNICALL Java_ru_testsimpleapps_lifewallpapertree_WallpaperLib_init(JNIEnv * env, jobject obj, jobject assetManager, jobject pngManager){
+        LOGI("JNI::INIT;");
+        wallpaper = new Main(env, assetManager, pngManager);
         wallpapersObjects.push(wallpaper);
+    }
+
+    JNIEXPORT void JNICALL Java_ru_testsimpleapps_lifewallpapertree_WallpaperLib_onChange(JNIEnv * env, jobject obj, jint width, jint height, jboolean isQuality){
+        LOGI("JNI::ONCHANGE: H: %d; W: %d; HQ: %d;", height, width, isQuality);
+        if(wallpaper != NULL)
+            wallpaper->onChange(width, height, isQuality);
     }
 
     JNIEXPORT void JNICALL Java_ru_testsimpleapps_lifewallpapertree_WallpaperLib_step(JNIEnv * env, jobject obj){

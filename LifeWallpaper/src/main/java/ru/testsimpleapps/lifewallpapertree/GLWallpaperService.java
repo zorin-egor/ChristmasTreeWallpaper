@@ -19,13 +19,6 @@ public abstract class GLWallpaperService extends WallpaperService {
             }
 
             @Override
-            public void onPause() {
-                super.onPause();
-                Log.d(WallpaperLib.TAG, this.getClass().toString() + " - onPause");
-                WallpaperLib.destroyPrevious();
-            }
-
-            @Override
             public SurfaceHolder getHolder() {
                 Log.d(WallpaperLib.TAG, this.getClass().toString() + " - getHolder");
                 return getSurfaceHolder();

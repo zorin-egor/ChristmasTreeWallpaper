@@ -15,14 +15,10 @@
 class Main {
 
     public:
-        Main(   JNIEnv * _env, jobject _assetManager, jobject _pngManager, jint _width, jint _height, jboolean _isQuality) :
+        Main(   JNIEnv * _env, jobject _assetManager, jobject _pngManager) :
                 env(_env),
                 assetManager(_assetManager),
                 pngManager(_pngManager),
-                WIDTH(_width),
-                HEIGHT(_height),
-                IS_QUALITY(_isQuality),
-                COEFFICIENT((GLfloat)_width / (GLfloat)_height),
                 ANGLE(-90.0f),
                 WIND_POWER(Snow::WIND_POWER::SLOW),
                 STRICT_LEFT(-65.0f),
@@ -33,29 +29,17 @@ class Main {
         {
                 LOGI("Main();");
                 init();
-                createObjects();
         }
 
-         ~Main(){
-                LOGI("~Main();");
-//                glUseProgram(0);
-//                glDeleteProgram(programEllipse);
-//                glDeleteProgram(programStar);
-//                glDeleteProgram(programSnow);
-
-                for(int i = 0; i < object.size(); i++){
-                        delete object[i];
-                }
-
-                delete pTextures;
-        }
-
+        ~Main();
+        void onChange(int width, int height, bool isQuality);
         void step();
         void action(bool isLeftOrRight);
 
     private:
         bool init();
         void createObjects();
+        void deleteObjects();
 
         // Java references
         JNIEnv * env;
@@ -63,11 +47,10 @@ class Main {
         jobject assetManager;
 
         // Screen
-        const int WIDTH;
-        const int HEIGHT;
-        const bool IS_QUALITY;
-        const GLfloat COEFFICIENT;
-
+        int width;
+        int height;
+        bool isQuality;
+        float coefficient;
         // Initial values
         const GLfloat ANGLE;
         const Snow::WIND_POWER WIND_POWER;
