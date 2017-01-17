@@ -23,3 +23,12 @@ Android NDK. OpenGL ES 2.0.  Cristmas tree live wallpaper.
   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   See the License for the specific language governing permissions and
   limitations under the License.
+
+
+## Screenshots
+<p align="center">
+<img src="https://cloud.githubusercontent.com/assets/13707343/22035974/db297d2e-dd02-11e6-8486-3d43ff8d053c.png" width="350"/>
+<img src="https://cloud.githubusercontent.com/assets/13707343/22035975/db2ec9aa-dd02-11e6-8485-494ea95fdd88.png" width="350"/>
+<img src="https://cloud.githubusercontent.com/assets/13707343/22035973/db27df1e-dd02-11e6-8692-b48fd3e8716b.png" width="350"/>
+<img src="https://cloud.githubusercontent.com/assets/13707343/22035972/db271336-dd02-11e6-85a9-e22ea84feab2.png" width="350"/>
+</p>
