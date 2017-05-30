@@ -27,6 +27,7 @@ public class WallpaperActivity extends Activity implements Button.OnClickListene
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.life_wallpaper_activity);
         // Surface
         wallpaperGLSurfaceViewActivity = (WallpaperGLSurfaceViewActivity) findViewById(R.id.gl_surfaces_view);
