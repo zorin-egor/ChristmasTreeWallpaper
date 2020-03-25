@@ -78,7 +78,7 @@ android {
             variant.outputs.all {
                 def buildType = variant.buildType.isDebuggable()? '_debug' : ''
                 def dateTime =  new SimpleDateFormat("_MMMMM.dd_HH-mm").format(new Date())
-                outputFileName = "Ping-Pong_${variant.versionName}" +
+                outputFileName = "ChristmasTreeWallpaper_${variant.versionName}" +
                         "${buildType}${dateTime}_" +
                         "build-${variant.versionCode}.apk"
             }
