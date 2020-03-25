@@ -1,5 +1,5 @@
-# WallpaperCristmasTree
-Android NDK. OpenGL ES 2.0.  Cristmas tree live wallpaper.
+# ChristmasTreeWallpaper
+Android NDK. OpenGL ES 2.0.  Christmas tree live wallpaper.
 
 <u><b>Play market:</u></b> https://play.google.com/store/apps/details?id=ru.testsimpleapps.lifewallpapertree
 
