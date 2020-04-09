@@ -46,7 +46,7 @@ public class WallpaperGLService extends WallpaperService {
 
         @Override
         public void onTouchEvent(final MotionEvent event) {
-            mWallpaperSurface.getMove(event);
+            mWallpaperSurface.touch(event);
         }
     }
 }

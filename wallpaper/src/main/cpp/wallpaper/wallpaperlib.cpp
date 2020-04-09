@@ -8,15 +8,15 @@ std::map<long, Wallpaper*> oWallpapers;
 
 extern "C" {
 
-    JNI_METHOD(void, init)(JNIEnv * env, jclass type, jint id, jobject assetManager, jobject pngManager) {
+    JNI_METHOD(void, init)(JNIEnv * env, jclass type, jint id, jobject assetManager, jobject bitmapManager) {
         LOGI("JNI::INIT(%i)", id);
         if (oWallpapers.count(id) <= 0) {
-            oWallpapers[id] = new Wallpaper(env, assetManager, pngManager);
+            oWallpapers[id] = new Wallpaper(env, assetManager, bitmapManager);
         }
     }
 
     JNI_METHOD(void, destroy)(JNIEnv *env, jclass type, jint id) {
-        LOGI("JNI::EXIT(%i)", id);
+        LOGI("JNI::DESTROY(%i)", id);
         if (oWallpapers.count(id) > 0) {
             delete oWallpapers[id];
             oWallpapers.erase(id);

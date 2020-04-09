@@ -38,6 +38,7 @@ class Wallpaper {
 
             Snow::WIND_POWER WIND_POWER;
 
+            // TODO temporary solution
             std::mutex m_oDrawMutex;
 
             // Screen
@@ -98,7 +99,7 @@ class Wallpaper {
 
     public:
 
-        Wallpaper(JNIEnv * env, jobject assetManager, jobject pngManager);
+        Wallpaper(JNIEnv * env, jobject assetManager, jobject bitmapManager);
 
         ~Wallpaper();
 
@@ -116,7 +117,7 @@ class Wallpaper {
 
     private:
 
-        bool init(JNIEnv* env, jobject pngManager, jobject assetManager);
+        bool init(JNIEnv* env, jobject assetManager, jobject bitmapManager);
 
         void createTextureObjects();
 

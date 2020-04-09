@@ -27,4 +27,4 @@ class MakeShaders {
         static GLuint createProgram(const char* pVertexSource, const char* pFragmentSource);
 };
 
-#endif //LIFEWALLPAPERTREE_MAKESHADERS_H
+#endif

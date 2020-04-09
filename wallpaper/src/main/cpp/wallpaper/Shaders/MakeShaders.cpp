@@ -80,19 +80,19 @@ const char * MakeShaders::F_SNOW_SHADER = "precision mediump float;"
                                             "}";
 
 GLuint MakeShaders::compileShader(GLenum shaderType, const char* pSource) {
-    // Создаём шейдер и получаем ссылку него, где shaderType - тип шейдера
+    // Create shared and get it link
     GLuint shader = glCreateShader(shaderType);
 
     if (shader) {
-        // Привязываем шейдер к исходнику
+        // Bind the shader to the source
         glShaderSource(shader, 1, &pSource, NULL);
-        // Компилим шейдер
+        // Compile shared
         glCompileShader(shader);
         GLint compiled = 0;
-        // Проверяем статус компиляции шейдера
+        // Check shader compile status
         glGetShaderiv(shader, GL_COMPILE_STATUS, &compiled);
 
-        // Если скомпилить не удалось, то выводим полный лог и удаляем шейдер который создали
+        // If it was not possible to compile, then display the full log and delete the shader that was created
         if (compiled == 0) {
             GLint infoLen = 0;
             glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &infoLen);
@@ -115,32 +115,32 @@ GLuint MakeShaders::compileShader(GLenum shaderType, const char* pSource) {
 }
 
 GLuint MakeShaders::createProgram(const char* pVertexSource, const char* pFragmentSource) {
-    // Компилим пару шейдеров "vertex" и "fragment"
-    // Компилим "vertex" шейдер
+    // Compile a couple of vertex and fragment shaders
+    // Compile the "vertex" shader
     GLuint vertexShader = compileShader(GL_VERTEX_SHADER, pVertexSource);
     if (vertexShader == 0) {
         return 0;
     }
 
-    // Компилим "fragment" шейдер
+    // Compile the fragment shader
     GLuint pixelShader = compileShader(GL_FRAGMENT_SHADER, pFragmentSource);
     if (pixelShader == 0) {
         return 0;
     }
 
-    // Создаем программу и получаем ссылку на неё
+    // Create a program and get a link to it
     GLuint program = glCreateProgram();
     if (program) {
-        // Привязываем шейдеры к программе
+        // Bind shaders to the program
         glAttachShader(program, vertexShader);
         glAttachShader(program, pixelShader);
 
-        // Линкуем программу
+        // Link the program
         glLinkProgram(program);
         GLint linkStatus = GL_FALSE;
         glGetProgramiv(program, GL_LINK_STATUS, &linkStatus);
 
-        // Если не удалось слинковать, получаем статус и удаляем программу
+        // If it was not possible to link, get the status and delete the program
         if (linkStatus != GL_TRUE) {
             GLint bufLength = 0;
             glGetProgramiv(program, GL_INFO_LOG_LENGTH, &bufLength);

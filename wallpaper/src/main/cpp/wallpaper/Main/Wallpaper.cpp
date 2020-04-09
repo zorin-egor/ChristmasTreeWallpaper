@@ -7,27 +7,22 @@ const GLfloat Wallpaper::STRICT_INTERVAL = (fabsf(STRICT_RIGHT) - fabsf(STRICT_L
 const GLfloat Wallpaper::ANGLE_STEP = 5.0f;
 
 
-Wallpaper::Wallpaper(JNIEnv * env, jobject assetManager, jobject pngManager) {
+Wallpaper::Wallpaper(JNIEnv * env, jobject assetManager, jobject bitmapManager) {
     LOGI("Wallpaper::Wallpaper();");
     WIND_POWER = Snow::WIND_POWER::SLOW;
     m_fCurrentAngle = ANGLE;
-    init(env, assetManager, pngManager);
+    init(env, assetManager, bitmapManager);
 }
 
 Wallpaper::~Wallpaper() {
-    LOGI("Wallpaper::Wallpaper();");
-    //glUseProgram(0);
-    //glDeleteProgram(m_nProgramEllipse);
-    //glDeleteProgram(m_nProgramStar);
-    //glDeleteProgram(m_nProgramSnow);
-
+    LOGI("Wallpaper::~Wallpaper();");
     deleteTextureObjects();
     delete m_pTextures;
 }
 
-bool Wallpaper::init(JNIEnv* env, jobject assetManager, jobject pngManager) {
+bool Wallpaper::init(JNIEnv* env, jobject assetManager, jobject bitmapManager) {
     // Create texture manager
-    m_pTextures = new TexturesManager(env, pngManager, assetManager);
+    m_pTextures = new TexturesManager(env, assetManager, bitmapManager);
 
     // Ellipse
     m_nProgramEllipse = MakeShaders::createProgram(MakeShaders::V_ELLIPSE_SHADER, MakeShaders::F_ELLIPSE_SHADER);
@@ -334,7 +329,6 @@ void Wallpaper::action(bool isLeftOrRight) {
                 m_pSnowFront->setPower(Snow::WIND_POWER::FAST);
                 m_pSnowBack->setPower(Snow::WIND_POWER::FAST);
             }
-
         }
     }
 

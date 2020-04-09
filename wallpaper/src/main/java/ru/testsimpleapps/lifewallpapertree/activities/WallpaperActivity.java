@@ -19,8 +19,8 @@ import ru.testsimpleapps.lifewallpapertree.views.WallpaperSurface;
 public class WallpaperActivity extends Activity implements Button.OnClickListener{
 
     private WallpaperSurface mWallpaperSurface;
-    private Button mInstallFullButton;
-    private Button mInstallLightButton;
+    private Button mSetFullButton;
+    private Button mSetLightButton;
     private Button mExitButton;
 
     @Override
@@ -39,17 +39,17 @@ public class WallpaperActivity extends Activity implements Button.OnClickListene
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.button_install_full :
+            case R.id.set_full_button:
                 PreferenceManager.getInstance(getApplicationContext()).setWallpaperQuality(true);
                 mWallpaperSurface.setQuality(true);
                 setWallpaper();
                 break;
-            case R.id.button_install_light :
+            case R.id.set_light_button:
                 PreferenceManager.getInstance(getApplicationContext()).setWallpaperQuality(false);
                 mWallpaperSurface.setQuality(false);
                 setWallpaper();
                 break;
-            case R.id.button_exit :
+            case R.id.exit_button:
                 finish();
                 break;
         }
@@ -61,11 +61,11 @@ public class WallpaperActivity extends Activity implements Button.OnClickListene
     }
 
     private void setButtonActions() {
-        mInstallFullButton = findViewById(R.id.button_install_full);
-        mInstallFullButton.setOnClickListener(this);
-        mInstallLightButton = findViewById(R.id.button_install_light);
-        mInstallLightButton.setOnClickListener(this);
-        mExitButton = findViewById(R.id.button_exit);
+        mSetFullButton = findViewById(R.id.set_full_button);
+        mSetFullButton.setOnClickListener(this);
+        mSetLightButton = findViewById(R.id.set_light_button);
+        mSetLightButton.setOnClickListener(this);
+        mExitButton = findViewById(R.id.exit_button);
         mExitButton.setOnClickListener(this);
     }
 

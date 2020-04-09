@@ -1,5 +1,5 @@
-#ifndef MANAGER_TEXTURE_H
-#define MANAGER_TEXTURE_H
+#ifndef TEXTURES_MANAGER_H
+#define TEXTURES_MANAGER_H
 
 #include <string>
 #include <map>
@@ -65,7 +65,7 @@ class TexturesManager {
 
     public:
 
-        TexturesManager(JNIEnv* env, jobject pngManager, jobject assetsManager);
+        TexturesManager(JNIEnv* env, jobject assetsManager, jobject bitmapManager);
 
         ~TexturesManager();
 
@@ -79,17 +79,17 @@ class TexturesManager {
 
     private:
 
-        void init(JNIEnv * env, jobject pngManager, jobject assetManager);
+        void init(JNIEnv *env, jobject assetManager, jobject bitmapManager);
 
         u_char * argb2rgba(unsigned int * pixels, int w, int h);
 
-        Texture * loadTexture(JNIEnv * env, jobject pngManager, const char * filename);
+        Texture * loadTexture(JNIEnv * env, jobject bitmapManager, const char * filename);
 
-        void loadTextures(JNIEnv * env, jobject pngManager);
+        void loadTextures(JNIEnv * env, jobject bitmapManager);
 
         GLuint createTexture(Texture * texture);
 
         void createTextures();
 };
 
-#endif //GAME_LOADTEXTURES_H
+#endif

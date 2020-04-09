@@ -30,7 +30,7 @@ public class WallpaperSurface extends GLSurfaceView {
 
     @Override
     public boolean onTouchEvent(final MotionEvent event) {
-        getMove(event);
+        touch(event);
         return true;
     }
 
@@ -53,15 +53,17 @@ public class WallpaperSurface extends GLSurfaceView {
         }
     }
 
-    public void getMove(final MotionEvent event) {
-        switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN: {
+    public void touch(final MotionEvent event) {
+        switch (event.getActionMasked()) {
+            case MotionEvent.ACTION_DOWN:
+            case MotionEvent.ACTION_POINTER_DOWN: {
                 mDownX = event.getX();
                 mDownY = event.getY();
                 break;
             }
 
-            case MotionEvent.ACTION_UP: {
+            case MotionEvent.ACTION_UP:
+            case MotionEvent.ACTION_POINTER_UP: {
                 mUpX = event.getX();
                 mUpY = event.getY();
                 float deltaX = mDownX - mUpX;
