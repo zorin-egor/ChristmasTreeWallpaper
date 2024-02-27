@@ -22,20 +22,20 @@ public class PreferenceManager {
         return localInstance;
     }
 
-    private final SharedPreferences mSharedPreferences;
+    private final SharedPreferences sharedPreferences;
 
     private final String KEY_1 = "KEY_1";
 
     public PreferenceManager(Context context) {
-        mSharedPreferences = context.getSharedPreferences(TAG, Context.MODE_PRIVATE);
+        sharedPreferences = context.getSharedPreferences(TAG, Context.MODE_PRIVATE);
     }
 
     public void setWallpaperQuality(boolean isHighQuality) {
-        mSharedPreferences.edit().putBoolean(KEY_1, isHighQuality).apply();
+        sharedPreferences.edit().putBoolean(KEY_1, isHighQuality).apply();
     }
 
     public boolean isWallpaperQuality() {
-        return mSharedPreferences.getBoolean(KEY_1, false);
+        return sharedPreferences.getBoolean(KEY_1, false);
     }
 
 }

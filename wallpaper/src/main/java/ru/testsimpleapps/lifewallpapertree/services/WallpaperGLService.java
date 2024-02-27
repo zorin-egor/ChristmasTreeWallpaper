@@ -15,12 +15,12 @@ public class WallpaperGLService extends WallpaperService {
 
     public class GLWallpaperEngine extends Engine {
 
-        WallpaperSurface mWallpaperSurface;
+        WallpaperSurface wallpaperSurface;
 
         @Override
         public void onCreate(SurfaceHolder surfaceHolder) {
             super.onCreate(surfaceHolder);
-            mWallpaperSurface = new WallpaperSurface(getApplicationContext()) {
+            wallpaperSurface = new WallpaperSurface(getApplicationContext()) {
                 @Override
                 public SurfaceHolder getHolder() {
                     return GLWallpaperEngine.this.getSurfaceHolder();
@@ -31,22 +31,22 @@ public class WallpaperGLService extends WallpaperService {
         @Override
         public void onDestroy() {
             super.onDestroy();
-            mWallpaperSurface.onDestroy();
+            wallpaperSurface.onDestroy();
         }
 
         @Override
         public void onVisibilityChanged(boolean visible) {
             super.onVisibilityChanged(visible);
             if (visible) {
-                mWallpaperSurface.onResume();
+                wallpaperSurface.onResume();
             } else {
-                mWallpaperSurface.onPause();
+                wallpaperSurface.onPause();
             }
         }
 
         @Override
         public void onTouchEvent(final MotionEvent event) {
-            mWallpaperSurface.touch(event);
+            wallpaperSurface.touch(event);
         }
     }
 }

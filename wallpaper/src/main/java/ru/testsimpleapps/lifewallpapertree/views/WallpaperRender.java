@@ -14,15 +14,15 @@ import ru.testsimpleapps.lifewallpapertree.managers.PreferenceManager;
 
 public class WallpaperRender implements GLSurfaceView.Renderer {
 
-    private WeakReference<Context> mContext;
+    private final WeakReference<Context> context;
 
     public WallpaperRender(Context context) {
-        mContext = new WeakReference<>(context);
+        this.context = new WeakReference<>(context);
     }
 
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-        final Context context = mContext.get();
+        final Context context = this.context.get();
         if (context != null) {
             WallpaperLib.init(hashCode(), context.getAssets(), new BitmapManager(context.getAssets()));
             WallpaperLib.quality(PreferenceManager.getInstance(context).isWallpaperQuality());

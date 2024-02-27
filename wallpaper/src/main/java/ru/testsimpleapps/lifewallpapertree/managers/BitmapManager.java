@@ -6,15 +6,15 @@ import android.graphics.BitmapFactory;
 
 public class BitmapManager {
 
-    private AssetManager mAssetManager;
+    private final AssetManager assetManager;
 
     public BitmapManager(AssetManager manager) {
-        mAssetManager = manager;
+        assetManager = manager;
     }
 
     public Bitmap open(String path) {
         try {
-            return BitmapFactory.decodeStream(mAssetManager.open(path));
+            return BitmapFactory.decodeStream(assetManager.open(path));
         } catch (Exception e) {
             return null;
         }

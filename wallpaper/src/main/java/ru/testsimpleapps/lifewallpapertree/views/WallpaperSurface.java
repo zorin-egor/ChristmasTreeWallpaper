@@ -10,13 +10,13 @@ import ru.testsimpleapps.lifewallpapertree.WallpaperLib;
 
 public class WallpaperSurface extends GLSurfaceView {
 
-    private int mMinDistance = 50;
-    private float mDownX;
-    private float mDownY;
-    private float mUpX;
-    private float mUpY;
+    private int minDistance = 50;
+    private float downX;
+    private float downY;
+    private float upX;
+    private float upY;
 
-    private WallpaperRender mWallpaperRender;
+    private WallpaperRender wallpaperRender;
 
     public WallpaperSurface(Context context) {
         super(context);
@@ -35,7 +35,7 @@ public class WallpaperSurface extends GLSurfaceView {
     }
 
     public void onDestroy() {
-        WallpaperLib.destroy(mWallpaperRender.hashCode());
+        WallpaperLib.destroy(wallpaperRender.hashCode());
         super.onDetachedFromWindow();
     }
 
@@ -44,9 +44,9 @@ public class WallpaperSurface extends GLSurfaceView {
     }
 
     private void init() {
-        mWallpaperRender = new WallpaperRender(getContext());
+        wallpaperRender = new WallpaperRender(getContext());
         setEGLContextClientVersion(2);
-        setRenderer(mWallpaperRender);
+        setRenderer(wallpaperRender);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             setPreserveEGLContextOnPause(true);
@@ -57,26 +57,26 @@ public class WallpaperSurface extends GLSurfaceView {
         switch (event.getActionMasked()) {
             case MotionEvent.ACTION_DOWN:
             case MotionEvent.ACTION_POINTER_DOWN: {
-                mDownX = event.getX();
-                mDownY = event.getY();
+                downX = event.getX();
+                downY = event.getY();
                 break;
             }
 
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_POINTER_UP: {
-                mUpX = event.getX();
-                mUpY = event.getY();
-                float deltaX = mDownX - mUpX;
-                float deltaY = mDownY - mUpY;
+                upX = event.getX();
+                upY = event.getY();
+                float deltaX = downX - upX;
+                float deltaY = downY - upY;
 
                 // Horizontal scroll
                 if (Math.abs(deltaX) > Math.abs(deltaY)) {
-                    if (Math.abs(deltaX) > mMinDistance) {
+                    if (Math.abs(deltaX) > minDistance) {
                         // Left or right
                         if (deltaX < 0) {
-                            WallpaperLib.action(mWallpaperRender.hashCode(), true);
+                            WallpaperLib.action(wallpaperRender.hashCode(), true);
                         } else {
-                            WallpaperLib.action(mWallpaperRender.hashCode(), false);
+                            WallpaperLib.action(wallpaperRender.hashCode(), false);
                         }
                     }
                 }

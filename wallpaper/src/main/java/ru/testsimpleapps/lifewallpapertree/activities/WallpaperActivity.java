@@ -18,10 +18,7 @@ import ru.testsimpleapps.lifewallpapertree.views.WallpaperSurface;
 
 public class WallpaperActivity extends Activity implements Button.OnClickListener{
 
-    private WallpaperSurface mWallpaperSurface;
-    private Button mSetFullButton;
-    private Button mSetLightButton;
-    private Button mExitButton;
+    private WallpaperSurface wallpaperSurface;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,45 +30,39 @@ public class WallpaperActivity extends Activity implements Button.OnClickListene
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mWallpaperSurface.onDestroy();
+        wallpaperSurface.onDestroy();
     }
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.set_full_button:
-                PreferenceManager.getInstance(getApplicationContext()).setWallpaperQuality(true);
-                mWallpaperSurface.setQuality(true);
-                setWallpaper();
-                break;
-            case R.id.set_light_button:
-                PreferenceManager.getInstance(getApplicationContext()).setWallpaperQuality(false);
-                mWallpaperSurface.setQuality(false);
-                setWallpaper();
-                break;
-            case R.id.exit_button:
-                finish();
-                break;
+        final int id = view.getId();
+        if (id == R.id.set_full_button) {
+            PreferenceManager.getInstance(getApplicationContext()).setWallpaperQuality(true);
+            wallpaperSurface.setQuality(true);
+            setWallpaper();
+        } else if (id == R.id.set_light_button) {
+            PreferenceManager.getInstance(getApplicationContext()).setWallpaperQuality(false);
+            wallpaperSurface.setQuality(false);
+            setWallpaper();
+        } else if (id == R.id.exit_button) {
+            finish();
         }
     }
 
     private void init(@Nullable Bundle savedInstanceState) {
-        mWallpaperSurface = findViewById(R.id.wallpaper_surface);
+        wallpaperSurface = findViewById(R.id.wallpaper_surface);
         setButtonActions();
     }
 
     private void setButtonActions() {
-        mSetFullButton = findViewById(R.id.set_full_button);
-        mSetFullButton.setOnClickListener(this);
-        mSetLightButton = findViewById(R.id.set_light_button);
-        mSetLightButton.setOnClickListener(this);
-        mExitButton = findViewById(R.id.exit_button);
-        mExitButton.setOnClickListener(this);
+        findViewById(R.id.set_full_button).setOnClickListener(this);
+        findViewById(R.id.set_light_button).setOnClickListener(this);
+        findViewById(R.id.exit_button).setOnClickListener(this);
     }
 
     private void setWallpaper() {
         try {
-            Intent intent = new Intent();
+            final Intent intent = new Intent();
             intent.setAction(WallpaperManager.ACTION_CHANGE_LIVE_WALLPAPER);
             intent.putExtra(
                 WallpaperManager.EXTRA_LIVE_WALLPAPER_COMPONENT,
