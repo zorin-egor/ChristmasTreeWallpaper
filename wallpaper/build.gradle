@@ -2,10 +2,12 @@ import java.text.SimpleDateFormat
 
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
 
 def APP_ID = 'com.simpleapps.lifewallpapertree'
-def APP_VERSION = '1.1'
-def APP_CODE = 9
+def APP_VERSION = '1.2'
+def APP_CODE = 10
 def FLAVOR_DIM = 'market'
 
 android {
@@ -130,4 +132,8 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.7.0'
     implementation 'androidx.core:core-ktx:1.13.1'
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.0.0'
+
+    implementation platform('com.google.firebase:firebase-bom:33.2.0')
+    implementation 'com.google.firebase:firebase-crashlytics'
+    implementation 'com.google.firebase:firebase-analytics'
 }
