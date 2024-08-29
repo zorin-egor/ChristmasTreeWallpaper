@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ru.testsimpleapps.lifewallpapertree.views.WallpaperSurface
+    <com.simpleapps.lifewallpapertree.views.WallpaperSurface
         android:id="@+id/wallpaper_surface"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

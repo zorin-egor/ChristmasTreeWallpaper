@@ -1,10 +1,10 @@
-package ru.testsimpleapps.lifewallpapertree.services;
+package com.simpleapps.lifewallpapertree.services;
 
 import android.service.wallpaper.WallpaperService;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 
-import ru.testsimpleapps.lifewallpapertree.views.WallpaperSurface;
+import com.simpleapps.lifewallpapertree.views.WallpaperSurface;
 
 public class WallpaperGLService extends WallpaperService {
 

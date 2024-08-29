@@ -2,7 +2,7 @@
 #include <Main/Wallpaper.h>
 #include <Common/LogGL.h>
 
-#define JNI_METHOD(RTYPE, NAME) JNIEXPORT RTYPE JNICALL Java_ru_testsimpleapps_lifewallpapertree_WallpaperLib_##NAME
+#define JNI_METHOD(RTYPE, NAME) JNIEXPORT RTYPE JNICALL Java_com_simpleapps_lifewallpapertree_WallpaperLib_##NAME
 
 std::map<long, Wallpaper*> oWallpapers;
 

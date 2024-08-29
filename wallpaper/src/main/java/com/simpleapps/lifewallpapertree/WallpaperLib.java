@@ -1,8 +1,8 @@
-package ru.testsimpleapps.lifewallpapertree;
+package com.simpleapps.lifewallpapertree;
 
 import android.content.res.AssetManager;
 
-import ru.testsimpleapps.lifewallpapertree.managers.BitmapManager;
+import com.simpleapps.lifewallpapertree.managers.BitmapManager;
 
 public class WallpaperLib {
 

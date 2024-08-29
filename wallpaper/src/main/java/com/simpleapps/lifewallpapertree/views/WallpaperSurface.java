@@ -1,4 +1,4 @@
-package ru.testsimpleapps.lifewallpapertree.views;
+package com.simpleapps.lifewallpapertree.views;
 
 import android.content.Context;
 import android.opengl.GLSurfaceView;
@@ -6,7 +6,7 @@ import android.os.Build;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
-import ru.testsimpleapps.lifewallpapertree.WallpaperLib;
+import com.simpleapps.lifewallpapertree.WallpaperLib;
 
 public class WallpaperSurface extends GLSurfaceView {
 

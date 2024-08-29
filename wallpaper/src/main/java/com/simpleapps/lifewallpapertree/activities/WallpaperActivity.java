@@ -1,4 +1,4 @@
-package ru.testsimpleapps.lifewallpapertree.activities;
+package com.simpleapps.lifewallpapertree.activities;
 
 import android.app.Activity;
 import android.app.WallpaperManager;
@@ -11,10 +11,10 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
-import ru.testsimpleapps.lifewallpapertree.R;
-import ru.testsimpleapps.lifewallpapertree.managers.PreferenceManager;
-import ru.testsimpleapps.lifewallpapertree.services.WallpaperGLService;
-import ru.testsimpleapps.lifewallpapertree.views.WallpaperSurface;
+import com.simpleapps.lifewallpapertree.R;
+import com.simpleapps.lifewallpapertree.managers.PreferenceManager;
+import com.simpleapps.lifewallpapertree.services.WallpaperGLService;
+import com.simpleapps.lifewallpapertree.views.WallpaperSurface;
 
 public class WallpaperActivity extends Activity implements Button.OnClickListener{
 

@@ -1,4 +1,4 @@
-package ru.testsimpleapps.lifewallpapertree.managers;
+package com.simpleapps.lifewallpapertree.managers;
 
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;

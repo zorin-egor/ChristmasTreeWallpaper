@@ -2,13 +2,15 @@
 *.bat
 *.so
 *.jks
-keystore.properties
 
 gradlew
 .gradle
 .idea
 /local.properties
+/keystore.properties
 .DS_Store
 /build
 /captures
 .externalNativeBuild
+/game_christmas_tree_wallpaper
+/lib

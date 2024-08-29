@@ -1,4 +1,4 @@
-package ru.testsimpleapps.lifewallpapertree.managers;
+package com.simpleapps.lifewallpapertree.managers;
 
 import android.content.Context;
 import android.content.SharedPreferences;

@@ -1,16 +1,16 @@
-package ru.testsimpleapps.lifewallpapertree.views;
+package com.simpleapps.lifewallpapertree.views;
 
 import android.content.Context;
 import android.opengl.GLSurfaceView;
+
+import com.simpleapps.lifewallpapertree.WallpaperLib;
+import com.simpleapps.lifewallpapertree.managers.BitmapManager;
+import com.simpleapps.lifewallpapertree.managers.PreferenceManager;
 
 import java.lang.ref.WeakReference;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
-
-import ru.testsimpleapps.lifewallpapertree.WallpaperLib;
-import ru.testsimpleapps.lifewallpapertree.managers.BitmapManager;
-import ru.testsimpleapps.lifewallpapertree.managers.PreferenceManager;
 
 public class WallpaperRender implements GLSurfaceView.Renderer {
 

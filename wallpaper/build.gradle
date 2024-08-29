@@ -3,13 +3,13 @@ import java.text.SimpleDateFormat
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
-def APP_ID = 'ru.testsimpleapps.lifewallpapertree'
+def APP_ID = 'com.simpleapps.lifewallpapertree'
 def APP_VERSION = '1.1'
 def APP_CODE = 9
 def FLAVOR_DIM = 'market'
 
 android {
-    namespace = 'ru.testsimpleapps.lifewallpapertree'
+    namespace = 'com.simpleapps.lifewallpapertree'
     flavorDimensions = [FLAVOR_DIM]
 
     defaultConfig {
@@ -127,7 +127,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'androidx.core:core-ktx:1.12.0'
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.22'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'androidx.core:core-ktx:1.13.1'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.0.0'
 }
